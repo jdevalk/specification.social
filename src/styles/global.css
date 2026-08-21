@@ -212,21 +212,14 @@ h1 {
 .specimen {
   position: relative;
   padding: 28px;
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  background: var(--white);
-  box-shadow: var(--shadow);
-  transform: rotate(1deg);
-}
-.specimen::before {
-  content: "";
-  position: absolute;
-  inset: -13px 18px auto -13px;
-  height: 95%;
-  z-index: -1;
+  border: 1px solid rgba(15, 118, 110, 0.14);
   border-radius: 28px;
   background: var(--mint);
-  transform: rotate(-3deg);
+  box-shadow:
+    18px 18px 0 0 var(--white),
+    19px 19px 0 0 var(--line),
+    0 32px 60px rgba(16, 37, 34, 0.12);
+  transform: rotate(1deg);
 }
 .specimen-head {
   display: flex;
@@ -268,7 +261,7 @@ h1 {
   font-weight: 800;
 }
 .verified {
-  margin: 18px 0 0;
+  margin: 18px 0 2px;
   color: var(--teal);
   font:
     500 0.75rem "DM Mono",
