@@ -1,0 +1,1179 @@
+{
+  "version": "2026.08.21",
+  "generatedFor": "https://specification.social",
+  "platforms": [
+    {
+      "slug": "instagram",
+      "name": "Instagram",
+      "shortName": "Instagram",
+      "domain": "instagram.com",
+      "color": "#d62976",
+      "description": "Photo, carousel, Reel, and profile publishing requirements for Instagram.",
+      "verifiedAt": "2026-08-21",
+      "sources": [
+        {
+          "id": "ig-photo",
+          "title": "Image resolution of photos you share on Instagram",
+          "url": "https://www.facebook.com/help/1631821640426723/",
+          "publisher": "Instagram Help Center"
+        },
+        {
+          "id": "ig-carousel",
+          "title": "Share a post with multiple photos or videos on Instagram",
+          "url": "https://www.facebook.com/help/269314186824048/",
+          "publisher": "Instagram Help Center"
+        },
+        {
+          "id": "ig-alt",
+          "title": "Edit the alternative text for a post on Instagram",
+          "url": "https://www.facebook.com/help/instagram/503708446705527",
+          "publisher": "Instagram Help Center"
+        },
+        {
+          "id": "ig-tags",
+          "title": "How do I use hashtags on Instagram?",
+          "url": "https://www.facebook.com/help/351460621611097/",
+          "publisher": "Instagram Help Center"
+        }
+      ],
+      "constraints": [
+        {
+          "id": "profile.image.dimensions",
+          "group": "profile",
+          "label": "Profile image dimensions",
+          "value": "Not documented",
+          "status": "not-documented",
+          "note": "Instagram does not publish a current minimum or recommended profile-image size in its help center."
+        },
+        {
+          "id": "profile.image.formats",
+          "group": "profile",
+          "label": "Profile image formats",
+          "value": "Not documented",
+          "status": "not-documented"
+        },
+        {
+          "id": "profile.bio.max",
+          "group": "profile",
+          "label": "Biography length",
+          "value": "Not documented",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.text.max",
+          "group": "text",
+          "label": "Caption length",
+          "value": "Not documented",
+          "status": "not-documented",
+          "note": "Widely repeated limits without a current first-party source are deliberately excluded."
+        },
+        {
+          "id": "post.hashtags.max",
+          "group": "text",
+          "label": "Hashtags per post",
+          "value": "30",
+          "sourceIds": ["ig-tags"],
+          "machine": { "max": 30, "unit": "hashtags" }
+        },
+        {
+          "id": "post.image.count",
+          "group": "publishing",
+          "label": "Photos or videos per carousel",
+          "value": "Up to 10",
+          "sourceIds": ["ig-carousel"],
+          "machine": { "max": 10 }
+        },
+        {
+          "id": "post.image.dimensions",
+          "group": "images",
+          "label": "Photo dimensions",
+          "value": "320–1080 px wide; 1080 px recommended",
+          "sourceIds": ["ig-photo"],
+          "machine": {
+            "minWidth": 320,
+            "maxWidth": 1080,
+            "recommendedWidth": 1080,
+            "unit": "px"
+          }
+        },
+        {
+          "id": "post.image.aspect-ratio",
+          "group": "images",
+          "label": "Accepted photo aspect ratio",
+          "value": "1.91:1 through 3:4",
+          "sourceIds": ["ig-photo"],
+          "note": "Images outside this range are cropped to fit a supported ratio."
+        },
+        {
+          "id": "post.image.formats",
+          "group": "images",
+          "label": "Photo file formats",
+          "value": "Not documented",
+          "status": "not-documented",
+          "note": "The current help article specifies resolution and ratio, but not file extensions."
+        },
+        {
+          "id": "post.image.alt",
+          "group": "text",
+          "label": "Custom alternative text",
+          "value": "Supported",
+          "sourceIds": ["ig-alt"],
+          "machine": { "supported": true }
+        },
+        {
+          "id": "post.carousel.orientation",
+          "group": "publishing",
+          "label": "Carousel orientation",
+          "value": "One orientation applies to every item",
+          "sourceIds": ["ig-carousel"]
+        }
+      ]
+    },
+    {
+      "slug": "facebook",
+      "name": "Facebook",
+      "shortName": "Facebook",
+      "domain": "facebook.com",
+      "color": "#1877f2",
+      "description": "Profile, Page cover, feed image, and accessibility requirements for Facebook.",
+      "verifiedAt": "2026-08-21",
+      "sources": [
+        {
+          "id": "fb-profile",
+          "title": "Add or change your Facebook profile picture",
+          "url": "https://www.facebook.com/help/163248423739693",
+          "publisher": "Facebook Help Center"
+        },
+        {
+          "id": "fb-page",
+          "title": "Guidelines for Facebook Page profile pictures and cover photos",
+          "url": "https://www.facebook.com/help/125379114252045?locale=en_GB",
+          "publisher": "Facebook Help Center"
+        },
+        {
+          "id": "fb-photo",
+          "title": "Upload photos to Facebook",
+          "url": "https://www.facebook.com/help/121317464722113",
+          "publisher": "Facebook Help Center"
+        },
+        {
+          "id": "fb-alt",
+          "title": "Edit the alternative text for a photo on Facebook",
+          "url": "https://www.facebook.com/help/www/214124458607871",
+          "publisher": "Facebook Help Center"
+        }
+      ],
+      "constraints": [
+        {
+          "id": "profile.image.dimensions",
+          "group": "profile",
+          "label": "Profile image dimensions",
+          "value": "At least 320 × 320 px",
+          "sourceIds": ["fb-profile", "fb-page"],
+          "machine": { "minWidth": 320, "minHeight": 320, "unit": "px" }
+        },
+        {
+          "id": "profile.image.formats",
+          "group": "profile",
+          "label": "Profile image formats",
+          "value": "JPG or PNG",
+          "sourceIds": ["fb-page"],
+          "machine": { "formats": ["image/jpeg", "image/png"] }
+        },
+        {
+          "id": "profile.header.dimensions",
+          "group": "profile",
+          "label": "Page cover dimensions",
+          "value": "16:9; at least 400 × 150 px",
+          "sourceIds": ["fb-page"],
+          "note": "Facebook recommends 851 × 315 px, sRGB JPG under 100 KB for fastest loading."
+        },
+        {
+          "id": "profile.header.formats",
+          "group": "profile",
+          "label": "Page cover formats",
+          "value": "JPG or PNG",
+          "sourceIds": ["fb-page"],
+          "note": "PNG may produce better results for logos or text.",
+          "machine": { "formats": ["image/jpeg", "image/png"] }
+        },
+        {
+          "id": "post.text.max",
+          "group": "text",
+          "label": "Post text length",
+          "value": "Not documented",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.image.formats",
+          "group": "images",
+          "label": "Photo file formats",
+          "value": "JPEG, BMP, PNG, GIF, or TIFF",
+          "sourceIds": ["fb-photo"],
+          "machine": {
+            "formats": ["image/jpeg", "image/bmp", "image/png", "image/gif", "image/tiff"]
+          }
+        },
+        {
+          "id": "post.image.max-size",
+          "group": "images",
+          "label": "Photo file size",
+          "value": "Under 15 MB",
+          "sourceIds": ["fb-photo"],
+          "note": "Facebook advises keeping PNG files below 1 MB to avoid pixelation.",
+          "machine": { "maxBytes": 15000000 }
+        },
+        {
+          "id": "post.image.dimensions",
+          "group": "images",
+          "label": "Post image dimensions",
+          "value": "Not documented",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.image.count",
+          "group": "publishing",
+          "label": "Images per post",
+          "value": "Not documented",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.image.alt",
+          "group": "text",
+          "label": "Custom alternative text",
+          "value": "Supported and editable",
+          "sourceIds": ["fb-alt"],
+          "machine": { "supported": true }
+        }
+      ]
+    },
+    {
+      "slug": "linkedin",
+      "name": "LinkedIn",
+      "shortName": "LinkedIn",
+      "domain": "linkedin.com",
+      "color": "#0a66c2",
+      "description": "Post copy, multi-image, format, aspect-ratio, and accessibility requirements for LinkedIn.",
+      "verifiedAt": "2026-08-21",
+      "sources": [
+        {
+          "id": "li-post",
+          "title": "Share updates on LinkedIn",
+          "url": "https://www.linkedin.com/help/linkedin/answer/a527227",
+          "publisher": "LinkedIn Help"
+        },
+        {
+          "id": "li-images",
+          "title": "Share photos or videos",
+          "url": "https://www.linkedin.com/help/linkedin/answer/a527229",
+          "publisher": "LinkedIn Help"
+        },
+        {
+          "id": "li-formats",
+          "title": "Media file types supported on LinkedIn",
+          "url": "https://www.linkedin.com/help/linkedin/answer/a564109/media-file-types-supported-on-linkedin?lang=en",
+          "publisher": "LinkedIn Help"
+        },
+        {
+          "id": "li-api",
+          "title": "Images API",
+          "url": "https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/images-api?view=li-lms-2026-01",
+          "publisher": "Microsoft Learn"
+        }
+      ],
+      "constraints": [
+        {
+          "id": "profile.image.dimensions",
+          "group": "profile",
+          "label": "Profile image dimensions",
+          "value": "Not documented in selected sources",
+          "status": "not-documented"
+        },
+        {
+          "id": "profile.image.formats",
+          "group": "profile",
+          "label": "Profile image formats",
+          "value": "JPEG or PNG; GIF not supported",
+          "sourceIds": ["li-formats"],
+          "machine": { "formats": ["image/jpeg", "image/png"] }
+        },
+        {
+          "id": "post.text.max",
+          "group": "text",
+          "label": "Post text length",
+          "value": "3,000 characters",
+          "sourceIds": ["li-post"],
+          "machine": { "max": 3000, "unit": "characters" }
+        },
+        {
+          "id": "post.image.count",
+          "group": "publishing",
+          "label": "Images per post",
+          "value": "Up to 20",
+          "sourceIds": ["li-images"],
+          "machine": { "max": 20 }
+        },
+        {
+          "id": "post.image.dimensions",
+          "group": "images",
+          "label": "Post image dimensions",
+          "value": "At least 552 × 276 px; 1080 px wide recommended",
+          "sourceIds": ["li-images"],
+          "machine": {
+            "minWidth": 552,
+            "minHeight": 276,
+            "recommendedWidth": 1080,
+            "unit": "px"
+          }
+        },
+        {
+          "id": "post.image.aspect-ratio",
+          "group": "images",
+          "label": "Post image aspect ratio",
+          "value": "3:1 through 4:5",
+          "sourceIds": ["li-images"]
+        },
+        {
+          "id": "post.image.formats",
+          "group": "images",
+          "label": "Image file formats",
+          "value": "GIF, JPEG, PNG; HEIF/HEIC on iOS; WebP on Android",
+          "scope": "manual",
+          "sourceIds": ["li-formats"],
+          "machine": {
+            "formats": [
+              "image/gif",
+              "image/jpeg",
+              "image/png",
+              "image/heif",
+              "image/heic",
+              "image/webp"
+            ]
+          }
+        },
+        {
+          "id": "post.image.formats.api",
+          "group": "images",
+          "label": "API image formats",
+          "value": "JPEG, GIF, or PNG",
+          "scope": "api",
+          "sourceIds": ["li-api"],
+          "machine": { "formats": ["image/jpeg", "image/gif", "image/png"] }
+        },
+        {
+          "id": "post.image.max-size",
+          "group": "images",
+          "label": "Image file size",
+          "value": "5 MB",
+          "scope": "manual",
+          "sourceIds": ["li-images"],
+          "machine": { "maxBytes": 5000000 }
+        },
+        {
+          "id": "post.image.alt",
+          "group": "text",
+          "label": "Alternative text",
+          "value": "Supported; API maximum 4,086 characters",
+          "sourceIds": ["li-images", "li-api"],
+          "machine": { "supported": true, "apiMax": 4086 }
+        }
+      ]
+    },
+    {
+      "slug": "x",
+      "name": "X",
+      "shortName": "X",
+      "domain": "x.com",
+      "color": "#111111",
+      "description": "Profile art, post text, photo attachment, format, and alt-text requirements for X.",
+      "verifiedAt": "2026-08-21",
+      "sources": [
+        {
+          "id": "x-profile",
+          "title": "Common issues when uploading profile photos",
+          "url": "https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo",
+          "publisher": "X Help"
+        },
+        {
+          "id": "x-profile-help",
+          "title": "How to customize your X profile",
+          "url": "https://help.x.com/articles/166743",
+          "publisher": "X Help"
+        },
+        {
+          "id": "x-post",
+          "title": "How to post",
+          "url": "https://help.x.com/en/using-x/how-to-post",
+          "publisher": "X Help"
+        },
+        {
+          "id": "x-premium",
+          "title": "About X Premium",
+          "url": "https://help.x.com/en/using-x/x-premium",
+          "publisher": "X Help"
+        },
+        {
+          "id": "x-media",
+          "title": "Media upload best practices",
+          "url": "https://docs.x.com/x-api/media/quickstart/best-practices",
+          "publisher": "X Developer Platform"
+        },
+        {
+          "id": "x-alt",
+          "title": "How to make images accessible",
+          "url": "https://help.x.com/en/using-x/write-image-descriptions",
+          "publisher": "X Help"
+        }
+      ],
+      "constraints": [
+        {
+          "id": "profile.image.dimensions",
+          "group": "profile",
+          "label": "Profile image dimensions",
+          "value": "400 × 400 px recommended",
+          "sourceIds": ["x-profile"],
+          "machine": { "recommendedWidth": 400, "recommendedHeight": 400, "unit": "px" }
+        },
+        {
+          "id": "profile.image.formats",
+          "group": "profile",
+          "label": "Profile image formats",
+          "value": "JPG, GIF, or PNG; animated GIF excluded",
+          "sourceIds": ["x-profile", "x-profile-help"],
+          "machine": {
+            "formats": ["image/jpeg", "image/gif", "image/png"],
+            "animation": false
+          }
+        },
+        {
+          "id": "profile.image.max-size",
+          "group": "profile",
+          "label": "Profile image file size",
+          "value": "2 MB",
+          "sourceIds": ["x-profile"],
+          "machine": { "maxBytes": 2000000 }
+        },
+        {
+          "id": "profile.header.dimensions",
+          "group": "profile",
+          "label": "Header dimensions",
+          "value": "1500 × 500 px recommended",
+          "sourceIds": ["x-profile"],
+          "note": "About 60 px at the top and bottom may be cropped on some displays."
+        },
+        {
+          "id": "profile.bio.max",
+          "group": "profile",
+          "label": "Biography length",
+          "value": "160 characters",
+          "sourceIds": ["x-profile-help"],
+          "machine": { "max": 160, "unit": "characters" }
+        },
+        {
+          "id": "post.text.max",
+          "group": "text",
+          "label": "Post text length",
+          "value": "280 characters; Premium up to 25,000",
+          "sourceIds": ["x-post", "x-premium"],
+          "machine": { "max": 280, "premiumMax": 25000, "unit": "characters" }
+        },
+        {
+          "id": "post.image.count",
+          "group": "publishing",
+          "label": "Photos per post",
+          "value": "Up to 4",
+          "sourceIds": ["x-post", "x-media"],
+          "machine": { "max": 4 }
+        },
+        {
+          "id": "post.image.formats",
+          "group": "images",
+          "label": "API image formats",
+          "value": "JPG, PNG, GIF, or WebP",
+          "scope": "api",
+          "sourceIds": ["x-media"],
+          "machine": { "formats": ["image/jpeg", "image/png", "image/gif", "image/webp"] }
+        },
+        {
+          "id": "post.image.max-size",
+          "group": "images",
+          "label": "API image file size",
+          "value": "5 MB per image; 15 MB per animated GIF",
+          "scope": "api",
+          "sourceIds": ["x-media"],
+          "machine": { "maxBytes": 5000000, "animatedGifMaxBytes": 15000000 }
+        },
+        {
+          "id": "post.image.dimensions",
+          "group": "images",
+          "label": "Post image dimensions",
+          "value": "Not documented for manual posting",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.image.alt",
+          "group": "text",
+          "label": "Alternative text",
+          "value": "Up to 1,000 characters",
+          "sourceIds": ["x-alt"],
+          "machine": { "supported": true, "max": 1000, "unit": "characters" }
+        }
+      ]
+    },
+    {
+      "slug": "threads",
+      "name": "Threads",
+      "shortName": "Threads",
+      "domain": "threads.com",
+      "color": "#101010",
+      "description": "Post text, text attachment, media, and accessibility requirements for Threads.",
+      "verifiedAt": "2026-08-21",
+      "sources": [
+        {
+          "id": "th-launch",
+          "title": "Introducing Threads: A New Way to Share With Text",
+          "url": "https://about.fb.com/news/2023/07/introducing-threads-new-app-text-sharing/",
+          "publisher": "Meta"
+        },
+        {
+          "id": "th-attach",
+          "title": "Attach text to Threads posts",
+          "url": "https://about.fb.com/news/2025/09/attach-text-threads-posts-share-longer-perspectives/",
+          "publisher": "Meta"
+        },
+        {
+          "id": "th-post",
+          "title": "Post on Threads",
+          "url": "https://www.facebook.com/help/instagram/1217144552251333/?locale=en_GB",
+          "publisher": "Threads Help Centre"
+        },
+        {
+          "id": "th-alt",
+          "title": "Add or edit alt text on Threads",
+          "url": "https://www.facebook.com/help/instagram/294312679947330?locale=en_GB",
+          "publisher": "Threads Help Centre"
+        }
+      ],
+      "constraints": [
+        {
+          "id": "profile.image.dimensions",
+          "group": "profile",
+          "label": "Profile image dimensions",
+          "value": "Not documented",
+          "status": "not-documented"
+        },
+        {
+          "id": "profile.image.formats",
+          "group": "profile",
+          "label": "Profile image formats",
+          "value": "Not documented",
+          "status": "not-documented"
+        },
+        {
+          "id": "profile.bio.max",
+          "group": "profile",
+          "label": "Biography length",
+          "value": "Not documented",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.text.max",
+          "group": "text",
+          "label": "Post text length",
+          "value": "500 characters",
+          "sourceIds": ["th-launch"],
+          "machine": { "max": 500, "unit": "characters" }
+        },
+        {
+          "id": "post.text.attachment",
+          "group": "text",
+          "label": "Text attachment length",
+          "value": "Up to 10,000 characters",
+          "sourceIds": ["th-attach"],
+          "machine": { "max": 10000, "unit": "characters" }
+        },
+        {
+          "id": "post.image.formats",
+          "group": "images",
+          "label": "Photo file formats",
+          "value": "Not documented",
+          "status": "not-documented",
+          "note": "Threads confirms photos and GIFs are supported, but does not publish a complete extension list."
+        },
+        {
+          "id": "post.image.dimensions",
+          "group": "images",
+          "label": "Photo dimensions",
+          "value": "Not documented",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.image.count",
+          "group": "publishing",
+          "label": "Images per post",
+          "value": "Not documented",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.image.alt",
+          "group": "text",
+          "label": "Alternative text",
+          "value": "Supported for photos and videos",
+          "sourceIds": ["th-alt"],
+          "machine": { "supported": true }
+        },
+        {
+          "id": "post.media.types",
+          "group": "publishing",
+          "label": "Post media types",
+          "value": "Links, photos, videos, GIFs, and polls",
+          "sourceIds": ["th-post"]
+        }
+      ]
+    },
+    {
+      "slug": "bluesky",
+      "name": "Bluesky",
+      "shortName": "Bluesky",
+      "domain": "bsky.app",
+      "color": "#1185fe",
+      "description": "AT Protocol schema limits for Bluesky profiles, post text, image blobs, and alt text.",
+      "verifiedAt": "2026-08-21",
+      "sources": [
+        {
+          "id": "bs-profile",
+          "title": "app.bsky.actor.profile schema",
+          "url": "https://github.com/bluesky-social/atproto/blob/main/lexicons/app/bsky/actor/profile.json",
+          "publisher": "Bluesky Social"
+        },
+        {
+          "id": "bs-post",
+          "title": "app.bsky.feed.post schema",
+          "url": "https://github.com/bluesky-social/atproto/blob/main/lexicons/app/bsky/feed/post.json",
+          "publisher": "Bluesky Social"
+        },
+        {
+          "id": "bs-images",
+          "title": "app.bsky.embed.images schema",
+          "url": "https://github.com/bluesky-social/atproto/blob/main/lexicons/app/bsky/embed/images.json",
+          "publisher": "Bluesky Social"
+        }
+      ],
+      "constraints": [
+        {
+          "id": "profile.image.dimensions",
+          "group": "profile",
+          "label": "Profile image dimensions",
+          "value": "Not documented",
+          "status": "not-documented"
+        },
+        {
+          "id": "profile.image.formats",
+          "group": "profile",
+          "label": "Avatar and banner formats",
+          "value": "JPEG or PNG",
+          "sourceIds": ["bs-profile"],
+          "machine": { "formats": ["image/jpeg", "image/png"] }
+        },
+        {
+          "id": "profile.image.max-size",
+          "group": "profile",
+          "label": "Avatar and banner file size",
+          "value": "1,000,000 bytes",
+          "sourceIds": ["bs-profile"],
+          "machine": { "maxBytes": 1000000 }
+        },
+        {
+          "id": "profile.name.max",
+          "group": "profile",
+          "label": "Display name length",
+          "value": "64 graphemes",
+          "sourceIds": ["bs-profile"],
+          "machine": { "max": 64, "unit": "graphemes" }
+        },
+        {
+          "id": "profile.bio.max",
+          "group": "profile",
+          "label": "Biography length",
+          "value": "256 graphemes",
+          "sourceIds": ["bs-profile"],
+          "machine": { "max": 256, "unit": "graphemes" }
+        },
+        {
+          "id": "post.text.max",
+          "group": "text",
+          "label": "Post text length",
+          "value": "300 graphemes",
+          "sourceIds": ["bs-post"],
+          "machine": { "max": 300, "unit": "graphemes", "maxUtf8Bytes": 3000 }
+        },
+        {
+          "id": "post.image.count",
+          "group": "publishing",
+          "label": "Images per post",
+          "value": "Up to 4",
+          "sourceIds": ["bs-images"],
+          "machine": { "max": 4 }
+        },
+        {
+          "id": "post.image.formats",
+          "group": "images",
+          "label": "Image file formats",
+          "value": "Any image MIME type accepted by the service",
+          "sourceIds": ["bs-images"],
+          "note": "The public lexicon declares image/* rather than a closed extension list.",
+          "machine": { "formats": ["image/*"] }
+        },
+        {
+          "id": "post.image.max-size",
+          "group": "images",
+          "label": "Image file size",
+          "value": "2,000,000 bytes per image",
+          "sourceIds": ["bs-images"],
+          "machine": { "maxBytes": 2000000 }
+        },
+        {
+          "id": "post.image.dimensions",
+          "group": "images",
+          "label": "Image dimensions",
+          "value": "Not documented",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.image.alt",
+          "group": "text",
+          "label": "Alternative text",
+          "value": "Required by the image-embed schema",
+          "sourceIds": ["bs-images"],
+          "machine": { "supported": true, "required": true }
+        }
+      ]
+    },
+    {
+      "slug": "mastodon",
+      "name": "Mastodon",
+      "shortName": "Mastodon",
+      "domain": "joinmastodon.org",
+      "color": "#6364ff",
+      "description": "Instance-defined Mastodon publishing limits and the API fields used to discover them.",
+      "verifiedAt": "2026-08-21",
+      "sources": [
+        {
+          "id": "ma-instance",
+          "title": "Instance entity",
+          "url": "https://docs.joinmastodon.org/entities/Instance/",
+          "publisher": "Mastodon documentation"
+        },
+        {
+          "id": "ma-endpoint",
+          "title": "Instance API methods",
+          "url": "https://docs.joinmastodon.org/methods/instance/",
+          "publisher": "Mastodon documentation"
+        }
+      ],
+      "constraints": [
+        {
+          "id": "profile.image.dimensions",
+          "group": "profile",
+          "label": "Profile image dimensions",
+          "value": "Instance-defined",
+          "status": "dynamic",
+          "note": "Profile limits can vary by server and software version."
+        },
+        {
+          "id": "profile.image.formats",
+          "group": "profile",
+          "label": "Profile image formats",
+          "value": "Instance-defined",
+          "status": "dynamic"
+        },
+        {
+          "id": "profile.bio.max",
+          "group": "profile",
+          "label": "Biography length",
+          "value": "Instance-defined",
+          "status": "dynamic",
+          "sourceIds": ["ma-instance"]
+        },
+        {
+          "id": "post.text.max",
+          "group": "text",
+          "label": "Post text length",
+          "value": "Instance-defined via configuration.statuses.max_characters",
+          "status": "dynamic",
+          "sourceIds": ["ma-instance", "ma-endpoint"],
+          "machine": {
+            "endpoint": "/api/v2/instance",
+            "field": "configuration.statuses.max_characters"
+          }
+        },
+        {
+          "id": "post.image.count",
+          "group": "publishing",
+          "label": "Media attachments per post",
+          "value": "Instance-defined via configuration.statuses.max_media_attachments",
+          "status": "dynamic",
+          "sourceIds": ["ma-instance"],
+          "machine": {
+            "endpoint": "/api/v2/instance",
+            "field": "configuration.statuses.max_media_attachments"
+          }
+        },
+        {
+          "id": "post.image.formats",
+          "group": "images",
+          "label": "Image file formats",
+          "value": "Instance-defined via configuration.media_attachments.supported_mime_types",
+          "status": "dynamic",
+          "sourceIds": ["ma-instance"],
+          "note": "Common deployments advertise JPEG, PNG, GIF, HEIC, HEIF, WebP, and AVIF, but clients should query the target instance.",
+          "machine": {
+            "endpoint": "/api/v2/instance",
+            "field": "configuration.media_attachments.supported_mime_types"
+          }
+        },
+        {
+          "id": "post.image.max-size",
+          "group": "images",
+          "label": "Image file size",
+          "value": "Instance-defined via configuration.media_attachments.image_size_limit",
+          "status": "dynamic",
+          "sourceIds": ["ma-instance"],
+          "machine": {
+            "endpoint": "/api/v2/instance",
+            "field": "configuration.media_attachments.image_size_limit"
+          }
+        },
+        {
+          "id": "post.image.dimensions",
+          "group": "images",
+          "label": "Image pixel limit",
+          "value": "Instance-defined via configuration.media_attachments.image_matrix_limit",
+          "status": "dynamic",
+          "sourceIds": ["ma-instance"],
+          "machine": {
+            "endpoint": "/api/v2/instance",
+            "field": "configuration.media_attachments.image_matrix_limit"
+          }
+        },
+        {
+          "id": "post.image.alt",
+          "group": "text",
+          "label": "Alternative-text length",
+          "value": "Instance-defined via configuration.media_attachments.description_limit",
+          "status": "dynamic",
+          "sourceIds": ["ma-instance"],
+          "machine": {
+            "endpoint": "/api/v2/instance",
+            "field": "configuration.media_attachments.description_limit"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "tiktok",
+      "name": "TikTok",
+      "shortName": "TikTok",
+      "domain": "tiktok.com",
+      "color": "#fe2c55",
+      "description": "TikTok Content Posting API photo formats, size, resolution, and title constraints.",
+      "verifiedAt": "2026-08-21",
+      "sources": [
+        {
+          "id": "tt-transfer",
+          "title": "Content Posting API media transfer guide",
+          "url": "https://developers.tiktok.com/doc/content-posting-api-media-transfer-guide",
+          "publisher": "TikTok for Developers"
+        },
+        {
+          "id": "tt-photo",
+          "title": "Direct Post API — Photo",
+          "url": "https://developers.tiktok.com/doc/content-posting-api-reference-photo-post",
+          "publisher": "TikTok for Developers"
+        }
+      ],
+      "constraints": [
+        {
+          "id": "profile.image.dimensions",
+          "group": "profile",
+          "label": "Profile image dimensions",
+          "value": "Not documented in the Content Posting API",
+          "status": "not-documented"
+        },
+        {
+          "id": "profile.image.formats",
+          "group": "profile",
+          "label": "Profile image formats",
+          "value": "Not documented in the Content Posting API",
+          "status": "not-documented"
+        },
+        {
+          "id": "profile.bio.max",
+          "group": "profile",
+          "label": "Biography length",
+          "value": "Not documented in the Content Posting API",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.text.max",
+          "group": "text",
+          "label": "Photo-post title length",
+          "value": "90 UTF-16 code units",
+          "scope": "api",
+          "sourceIds": ["tt-photo"],
+          "machine": { "max": 90, "unit": "utf16_code_units" }
+        },
+        {
+          "id": "post.image.formats",
+          "group": "images",
+          "label": "Photo file formats",
+          "value": "JPEG or WebP",
+          "scope": "api",
+          "sourceIds": ["tt-transfer"],
+          "machine": { "formats": ["image/jpeg", "image/webp"] }
+        },
+        {
+          "id": "post.image.max-size",
+          "group": "images",
+          "label": "Photo file size",
+          "value": "20 MB per image",
+          "scope": "api",
+          "sourceIds": ["tt-transfer"],
+          "machine": { "maxBytes": 20000000 }
+        },
+        {
+          "id": "post.image.dimensions",
+          "group": "images",
+          "label": "Photo resolution",
+          "value": "Up to 1080p",
+          "scope": "api",
+          "sourceIds": ["tt-transfer"]
+        },
+        {
+          "id": "post.image.count",
+          "group": "publishing",
+          "label": "Photos per post",
+          "value": "Not documented on the transfer guide",
+          "status": "not-documented",
+          "scope": "api"
+        },
+        {
+          "id": "post.image.alt",
+          "group": "text",
+          "label": "Alternative text",
+          "value": "Not documented in the Content Posting API",
+          "status": "not-documented",
+          "scope": "api"
+        }
+      ]
+    },
+    {
+      "slug": "youtube",
+      "name": "YouTube",
+      "shortName": "YouTube",
+      "domain": "youtube.com",
+      "color": "#ff0033",
+      "description": "YouTube channel profile image formats, file sizes, and banner artwork requirements.",
+      "verifiedAt": "2026-08-21",
+      "sources": [
+        {
+          "id": "yt-brand",
+          "title": "Manage your channel branding",
+          "url": "https://support.google.com/youtube/answer/10456525?hl=en-GB",
+          "publisher": "YouTube Help"
+        },
+        {
+          "id": "yt-banner",
+          "title": "YouTube banner size and dimensions",
+          "url": "https://support.google.com/youtube/answer/12950272?hl=en",
+          "publisher": "YouTube Help"
+        }
+      ],
+      "constraints": [
+        {
+          "id": "profile.image.dimensions",
+          "group": "profile",
+          "label": "Profile image display size",
+          "value": "Renders at 98 × 98 px",
+          "sourceIds": ["yt-brand"],
+          "machine": { "renderedWidth": 98, "renderedHeight": 98, "unit": "px" }
+        },
+        {
+          "id": "profile.image.formats",
+          "group": "profile",
+          "label": "Profile image formats",
+          "value": "JPG, GIF, BMP, or PNG; animated GIF excluded",
+          "sourceIds": ["yt-brand"],
+          "machine": {
+            "formats": ["image/jpeg", "image/gif", "image/bmp", "image/png"],
+            "animation": false
+          }
+        },
+        {
+          "id": "profile.image.max-size",
+          "group": "profile",
+          "label": "Profile image file size",
+          "value": "15 MB",
+          "sourceIds": ["yt-brand"],
+          "machine": { "maxBytes": 15000000 }
+        },
+        {
+          "id": "profile.header.dimensions",
+          "group": "profile",
+          "label": "Banner dimensions",
+          "value": "2560 × 1440 px recommended; 2048 × 1152 px minimum",
+          "sourceIds": ["yt-brand", "yt-banner"],
+          "note": "At the minimum size, keep text and logos inside the 1235 × 338 px safe area."
+        },
+        {
+          "id": "profile.header.formats",
+          "group": "profile",
+          "label": "Banner formats",
+          "value": "JPG, GIF, BMP, or PNG; animated GIF excluded",
+          "sourceIds": ["yt-brand"]
+        },
+        {
+          "id": "profile.header.max-size",
+          "group": "profile",
+          "label": "Banner file size",
+          "value": "6 MB",
+          "sourceIds": ["yt-brand"],
+          "machine": { "maxBytes": 6000000 }
+        },
+        {
+          "id": "post.text.max",
+          "group": "text",
+          "label": "Community post text",
+          "value": "Not documented in selected sources",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.image.formats",
+          "group": "images",
+          "label": "Community post image formats",
+          "value": "Not documented in selected sources",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.image.dimensions",
+          "group": "images",
+          "label": "Community post image dimensions",
+          "value": "Not documented in selected sources",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.image.alt",
+          "group": "text",
+          "label": "Community post alternative text",
+          "value": "Not documented in selected sources",
+          "status": "not-documented"
+        }
+      ]
+    },
+    {
+      "slug": "pinterest",
+      "name": "Pinterest",
+      "shortName": "Pinterest",
+      "domain": "pinterest.com",
+      "color": "#e60023",
+      "description": "Image Pin file formats, size, title, description, and text-box limits for Pinterest.",
+      "verifiedAt": "2026-08-21",
+      "sources": [
+        {
+          "id": "pi-spec",
+          "title": "Review Pin specs",
+          "url": "https://help.pinterest.com/en/article/review-pin-specs",
+          "publisher": "Pinterest Help"
+        }
+      ],
+      "constraints": [
+        {
+          "id": "profile.image.dimensions",
+          "group": "profile",
+          "label": "Profile image dimensions",
+          "value": "Not documented in Pin specs",
+          "status": "not-documented"
+        },
+        {
+          "id": "profile.image.formats",
+          "group": "profile",
+          "label": "Profile image formats",
+          "value": "Not documented in Pin specs",
+          "status": "not-documented"
+        },
+        {
+          "id": "profile.bio.max",
+          "group": "profile",
+          "label": "Biography length",
+          "value": "Not documented in Pin specs",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.text.max",
+          "group": "text",
+          "label": "Pin description length",
+          "value": "800 characters",
+          "sourceIds": ["pi-spec"],
+          "machine": { "max": 800, "unit": "characters" }
+        },
+        {
+          "id": "post.title.max",
+          "group": "text",
+          "label": "Pin title length",
+          "value": "100 characters",
+          "sourceIds": ["pi-spec"],
+          "machine": { "max": 100, "unit": "characters" }
+        },
+        {
+          "id": "post.textbox.max",
+          "group": "text",
+          "label": "Image Pin text-box length",
+          "value": "250 characters",
+          "sourceIds": ["pi-spec"],
+          "machine": { "max": 250, "unit": "characters" }
+        },
+        {
+          "id": "post.image.formats",
+          "group": "images",
+          "label": "Image Pin formats",
+          "value": "BMP, JPEG, PNG, TIFF, or WebP",
+          "sourceIds": ["pi-spec"],
+          "machine": {
+            "formats": ["image/bmp", "image/jpeg", "image/png", "image/tiff", "image/webp"]
+          }
+        },
+        {
+          "id": "post.image.max-size",
+          "group": "images",
+          "label": "Image Pin file size",
+          "value": "20 MB on web",
+          "scope": "manual",
+          "sourceIds": ["pi-spec"],
+          "machine": { "maxBytes": 20000000 }
+        },
+        {
+          "id": "post.image.dimensions",
+          "group": "images",
+          "label": "Image Pin dimensions",
+          "value": "Not documented in current Pin specs",
+          "status": "not-documented"
+        },
+        {
+          "id": "post.image.count",
+          "group": "publishing",
+          "label": "Images per Pin",
+          "value": "One image per standard Image Pin",
+          "sourceIds": ["pi-spec"],
+          "machine": { "max": 1 }
+        },
+        {
+          "id": "post.image.alt",
+          "group": "text",
+          "label": "Alternative text",
+          "value": "Not documented in current Pin specs",
+          "status": "not-documented"
+        }
+      ]
+    }
+  ]
+}

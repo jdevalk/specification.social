@@ -1,0 +1,27 @@
+---
+import type { Platform } from "~/lib/types";
+interface Props {
+  platform: Platform;
+  index: number;
+}
+const { platform, index } = Astro.props;
+const formats = platform.constraints.find((item) => item.id === "post.image.formats");
+const text = platform.constraints.find((item) => item.id === "post.text.max");
+---
+
+<a
+  class="platform-card"
+  href={`/platforms/${platform.slug}/`}
+  style={`--platform: ${platform.color}`}
+>
+  <div class="platform-card-top">
+    <span class="platform-dot"></span><span>{String(index + 1).padStart(2, "0")}</span>
+  </div>
+  <h2>{platform.name}</h2>
+  <p>{platform.description}</p>
+  <dl>
+    <div><dt>Text</dt><dd>{text?.value ?? "Not documented"}</dd></div>
+    <div><dt>Images</dt><dd>{formats?.value ?? "Not documented"}</dd></div>
+  </dl>
+  <span class="card-link">Open specification <span aria-hidden="true">→</span></span>
+</a>

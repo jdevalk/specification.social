@@ -1,0 +1,6 @@
+{
+  "name": "The Social Specification",
+  "description": "Sourced social publishing requirements.",
+  "endpoint": "https://mcp.specification.social/mcp",
+  "transport": "streamable-http"
+}

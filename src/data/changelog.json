@@ -1,0 +1,17 @@
+[
+  {
+    "date": "2026-08-21",
+    "title": "Initial public dataset",
+    "description": "Added ten platforms, normalized constraints, per-value sources, JSON and Markdown exports, comparison tables, and MCP tools."
+  },
+  {
+    "date": "2026-08-21",
+    "title": "Image formats made explicit",
+    "description": "Added manual and API image-format support, including platform-specific WebP, GIF, HEIF, HEIC, TIFF, and animation notes."
+  },
+  {
+    "date": "2026-08-21",
+    "title": "Unknowns are visible",
+    "description": "Introduced documented, instance-defined, and not-documented states so unsourced folklore is never presented as a rule."
+  }
+]

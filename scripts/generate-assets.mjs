@@ -1,0 +1,6 @@
+import sharp from "sharp";
+import { mkdir } from "node:fs/promises";
+
+await mkdir("public", { recursive: true });
+const svg = `<svg width="1200" height="675" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="675" fill="#f7f8f3"/><circle cx="1040" cy="80" r="260" fill="#dff479" opacity=".55"/><rect x="70" y="70" width="72" height="72" rx="18" fill="#0f766e"/><rect x="87" y="107" width="10" height="21" rx="2" fill="#dff479"/><rect x="102" y="87" width="10" height="41" rx="2" fill="#dff479"/><rect x="117" y="97" width="10" height="31" rx="2" fill="#dff479"/><text x="70" y="250" fill="#102522" font-family="Arial,sans-serif" font-size="82" font-weight="700">The Social</text><text x="70" y="340" fill="#0f766e" font-family="Arial,sans-serif" font-size="82" font-weight="700">Specification</text><text x="70" y="425" fill="#5b6b68" font-family="Arial,sans-serif" font-size="31">Exact publishing requirements for every platform.</text><g transform="translate(70 520)"><rect width="260" height="58" rx="29" fill="#102522"/><text x="28" y="38" fill="white" font-family="Arial,sans-serif" font-size="23" font-weight="700">specification.social</text></g></svg>`;
+await sharp(Buffer.from(svg)).jpeg({ quality: 88 }).toFile("public/og-default.jpg");

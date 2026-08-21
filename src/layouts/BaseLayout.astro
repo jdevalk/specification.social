@@ -1,0 +1,111 @@
+---
+import "~/styles/global.css";
+import Seo from "@jdevalk/astro-seo-graph/Seo.astro";
+import SiteHeader from "~/components/SiteHeader.astro";
+import SiteFooter from "~/components/SiteFooter.astro";
+import { site } from "~/lib/site";
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  graph?: Record<string, unknown>;
+}
+
+const { title, description, noindex = false, graph } = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const defaultGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      name: site.name,
+      url: site.url,
+      description: site.description,
+      inLanguage: "en",
+      publisher: { "@id": `${site.url}/#person` },
+    },
+    {
+      "@type": "Person",
+      "@id": `${site.url}/#person`,
+      name: site.author.name,
+      url: site.author.url,
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content={site.themeColor} />
+    <Seo
+      title={title}
+      titleTemplate={`%s · ${site.shortName}`}
+      description={description}
+      canonical={canonical}
+      ogType="website"
+      ogImage={`${site.url}/og-default.jpg`}
+      ogImageAlt="The Social Specification — exact publishing requirements for social platforms"
+      ogImageWidth={1200}
+      ogImageHeight={675}
+      siteName={site.name}
+      author={site.author.name}
+      noindex={noindex}
+      graph={graph ?? defaultGraph}
+      extraLinks={[
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+        { rel: "manifest", href: "/site.webmanifest" },
+        {
+          rel: "alternate",
+          type: "application/rss+xml",
+          title: `${site.name} changes`,
+          href: "/rss.xml",
+        },
+        {
+          rel: "alternate",
+          type: "application/json",
+          title: "Social platform data",
+          href: "/api/platforms.json",
+        },
+        { rel: "sitemap", href: "/sitemap-index.xml" },
+      ]}
+    />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <SiteHeader />
+    <main id="main"><slot /></main>
+    <aside class="family-band" aria-label="Related specifications">
+      <div class="container family-inner">
+        <p>
+          <strong>Part of the specification family.</strong> Practical, open references for the
+          things we publish.
+        </p>
+        <div>
+          <a href="https://specification.website">Website</a><a
+            href="https://specification.email">Email</a
+          >
+        </div>
+      </div>
+    </aside>
+    <SiteFooter />
+    <script>
+      document.querySelectorAll<HTMLButtonElement>("[data-copy]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          await navigator.clipboard.writeText(button.dataset.copy ?? "");
+          const original = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => (button.textContent = original), 1400);
+        });
+      });
+    </script>
+  </body>
+</html>

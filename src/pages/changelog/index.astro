@@ -1,0 +1,36 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import changes from "~/data/changelog.json";
+---
+
+<BaseLayout
+  title="Social platform specification changelog"
+  description="Changes to platform publishing limits, media formats, image sizes, and sources in The Social Specification."
+>
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Living reference</p><h1>Changelog.</h1><p class="lede">
+        Platform rules move. Every material dataset change is recorded here.
+      </p>
+    </div>
+  </header>
+  <section class="container section">
+    <ol class="timeline">
+      {
+        changes.map((change) => (
+          <li>
+            <>
+              <time datetime={change.date}>{change.date}</time>
+              <div>
+                <>
+                  <h2>{change.title}</h2>
+                  <p>{change.description}</p>
+                </>
+              </div>
+            </>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</BaseLayout>

@@ -1,0 +1,39 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { site } from "~/lib/site";
+---
+
+<BaseLayout
+  title="MCP server for social publishing requirements"
+  description="Connect an AI agent to sourced social media publishing requirements using The Social Specification MCP server."
+>
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Machine interface</p><h1>
+        Give your agent<br />the exact limits.
+      </h1><p class="lede">
+        The read-only MCP server exposes platform discovery, constraint lookup, image-format
+        support, comparisons, and preflight validation.
+      </p><div class="actions">
+        <button class="button primary" data-copy={site.mcp.endpoint}
+          >Copy MCP endpoint</button
+        ><a class="button" href="/api/platforms.json">Open JSON dataset</a>
+      </div>
+    </div>
+  </header>
+  <section class="container section">
+    <div class="feature-grid">
+      <article class="feature">
+        <h2>Discover</h2><p>
+          List platforms and inspect their available constraints and verification dates.
+        </p>
+      </article><article class="feature">
+        <h2>Compare</h2><p>Ask the same normalized question across multiple platforms.</p>
+      </article><article class="feature">
+        <h2>Validate</h2><p>
+          Check text length, image count, MIME type, and image file size before publishing.
+        </p>
+      </article>
+    </div><div class="code-card"><code>{site.mcp.endpoint}</code></div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,35 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="About the specification"
+  description="How The Social Specification sources, scopes, and maintains social publishing requirements."
+>
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow">About</p><h1>Standards,<br />not folklore.</h1>
+    </div>
+  </header>
+  <section class="container section">
+    <div class="prose">
+      <p class="lede">
+        The Social Specification is an open reference for people and software that publish
+        to social platforms.
+      </p><h2>What belongs here</h2><p>
+        Profile images, headers, biographies, post text, image and video dimensions, aspect
+        ratios, file formats, file sizes, accessibility fields, attachment counts, and
+        material differences between manual and API publishing.
+      </p><h2>Source policy</h2><p>
+        Stated limits require a first-party help page, developer document, or public
+        protocol schema. If a current source cannot be found, the value is marked “Not
+        documented.” Mastodon-style server configuration is marked “Instance-defined.”
+      </p><h2>Contribute</h2><p>
+        Platforms change frequently. Corrections and source updates are welcome on <a
+          href="https://github.com/jdevalk/specification.social">GitHub</a
+        >. Include a first-party URL and explain whether the rule applies to the user
+        interface, API, or both.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

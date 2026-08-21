@@ -1,0 +1,116 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import ConstraintRow from "~/components/ConstraintRow.astro";
+import { groups, platforms, constraintsFor } from "~/lib/platforms";
+import { site } from "~/lib/site";
+
+export function getStaticPaths() {
+  return platforms.map((platform) => ({
+    params: { slug: platform.slug },
+    props: { platform },
+  }));
+}
+const { platform } = Astro.props;
+const visibleGroups = groups.filter(
+  (group) => constraintsFor(platform, group.slug).length > 0,
+);
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${site.url}/platforms/${platform.slug}/#page`,
+      name: `${platform.name} publishing specification`,
+      description: platform.description,
+      url: `${site.url}/platforms/${platform.slug}/`,
+      dateModified: platform.verifiedAt,
+      isPartOf: { "@id": `${site.url}/#website` },
+    },
+    {
+      "@type": "Dataset",
+      "@id": `${site.url}/platforms/${platform.slug}/#dataset`,
+      name: `${platform.name} social publishing constraints`,
+      description: platform.description,
+      url: `${site.url}/platforms/${platform.slug}/`,
+      dateModified: platform.verifiedAt,
+      license: "https://opensource.org/license/mit",
+      distribution: [
+        {
+          "@type": "DataDownload",
+          encodingFormat: "application/json",
+          contentUrl: `${site.url}/platforms/${platform.slug}.json`,
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={`${platform.name} image sizes, formats, and text limits`}
+  description={platform.description}
+  {graph}
+>
+  <header
+    class="page-hero platform-hero"
+    style={`--platform: ${platform.color}`}
+    data-pagefind-filter={`platform:${platform.name}`}
+  >
+    <div class="container">
+      <p class="eyebrow platform-kicker">
+        <span class="platform-dot"></span>{platform.domain}
+      </p>
+      <h1>{platform.name}</h1>
+      <p class="lede">{platform.description}</p>
+      <div class="page-meta">
+        <span class="badge">Verified {platform.verifiedAt}</span><span class="badge"
+          >{platform.constraints.length} constraints</span
+        ><a class="button small" href={`/platforms/${platform.slug}.json`}>JSON</a><a
+          class="button small"
+          href={`/platforms/${platform.slug}.md`}>Markdown</a
+        >
+      </div>
+    </div>
+  </header>
+  <div class="container platform-layout">
+    <nav class="toc" aria-label={`${platform.name} sections`}>
+      <p>On this page</p>{
+        visibleGroups.map((group) => <a href={`#${group.slug}`}>{group.title}</a>)
+      }<a href="#sources">Sources</a>
+    </nav>
+    <div>
+      {
+        visibleGroups.map((group) => (
+          <section class="group" id={group.slug}>
+            <header class="group-title">
+              <>
+                <h2>{group.title}</h2>
+                <p>{group.summary}</p>
+              </>
+            </header>
+            {constraintsFor(platform, group.slug).map((constraint) => (
+              <ConstraintRow {constraint} {platform} />
+            ))}
+          </section>
+        ))
+      }
+      <section class="group" id="sources">
+        <header class="group-title">
+          <h2>Sources</h2><p>First-party documentation checked for this platform page.</p>
+        </header><ol class="source-list">
+          {
+            platform.sources.map((source, index) => (
+              <li>
+                <>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <a href={source.url}>{source.title}</a>
+                  <small>{source.publisher}</small>
+                </>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

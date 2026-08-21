@@ -1,0 +1,31 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Search social publishing requirements"
+  description="Search social platform image sizes, formats, text limits, and publishing requirements."
+  noindex
+>
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Search the dataset</p><h1>Find a requirement.</h1><div
+        class="search-box"
+      >
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Try “WebP”, “alt text”, or “profile image”…"
+          autocomplete="off"
+          aria-label="Search"
+        />
+      </div>
+    </div>
+  </header>
+  <section class="container section">
+    <div id="search-results" class="search-results">
+      <p>Start typing to search every platform page.</p>
+    </div>
+  </section>
+  <script is:inline src="/search.js"></script>
+</BaseLayout>

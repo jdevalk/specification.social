@@ -1,0 +1,19 @@
+---
+import { site } from "~/lib/site";
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label={`${site.name}, home`}>
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>{site.shortName}</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="/platforms/">Platforms</a>
+      <a href="/compare/">Compare</a>
+      <a href="/changelog/">Changelog</a>
+      <a href="/mcp/">MCP</a>
+      <a class="search-link" href="/search/">Search <span aria-hidden="true">⌕</span></a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,51 @@
+---
+import type { Constraint, Platform } from "~/lib/types";
+interface Props {
+  constraint: Constraint;
+  platform: Platform;
+}
+const { constraint, platform } = Astro.props;
+const sources = (constraint.sourceIds ?? [])
+  .map((id) => platform.sources.find((source) => source.id === id))
+  .filter(Boolean);
+const status = constraint.status ?? "documented";
+---
+
+<article
+  class:list={["constraint", `status-${status}`]}
+  id={constraint.id}
+  data-pagefind-body
+>
+  <div class="constraint-heading">
+    <h3>{constraint.label}</h3>
+    <div class="badges">
+      {
+        constraint.scope && constraint.scope !== "all" && (
+          <span class="badge">{constraint.scope}</span>
+        )
+      }
+      {
+        status !== "documented" && (
+          <span class:list={["badge", `badge-${status}`]}>
+            {status === "dynamic" ? "Instance-defined" : "Not documented"}
+          </span>
+        )
+      }
+    </div>
+  </div>
+  <p class="constraint-value">{constraint.value}</p>
+  {constraint.note && <p class="constraint-note">{constraint.note}</p>}
+  {
+    sources.length > 0 && (
+      <p class="constraint-sources">
+        Source:{" "}
+        {sources.map((source, i) => (
+          <>
+            <a href={source!.url}>{source!.publisher}</a>
+            {i < sources.length - 1 ? ", " : ""}
+          </>
+        ))}
+      </p>
+    )
+  }
+</article>

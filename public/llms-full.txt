@@ -1,0 +1,3 @@
+# The Social Specification
+
+The complete generated platform reference is written here during `npm run build`.

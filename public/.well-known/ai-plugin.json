@@ -1,0 +1,11 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "The Social Specification",
+  "name_for_model": "social_specification",
+  "description_for_human": "Social image sizes, formats, and text limits.",
+  "description_for_model": "Use sourced publishing constraints for social platforms.",
+  "api": { "type": "openapi", "url": "https://specification.social/api/platforms.json" },
+  "logo_url": "https://specification.social/favicon.svg",
+  "contact_email": "",
+  "legal_info_url": "https://specification.social/about/"
+}

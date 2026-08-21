@@ -1,0 +1,26 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import PlatformCard from "~/components/PlatformCard.astro";
+import { platforms } from "~/lib/platforms";
+---
+
+<BaseLayout
+  title="Platform specifications"
+  description="Browse image sizes, accepted formats, text limits, and publishing requirements for ten major social platforms."
+>
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Platform index</p><h1>
+        Every platform,<br />clearly specified.
+      </h1><p class="lede">
+        Each page separates documented rules, instance-defined settings, and values the
+        platform does not publicly specify.
+      </p>
+    </div>
+  </header>
+  <section class="container section">
+    <div class="platform-grid">
+      {platforms.map((platform, index) => <PlatformCard {platform} {index} />)}
+    </div>
+  </section>
+</BaseLayout>

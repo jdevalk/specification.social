@@ -1,0 +1,31 @@
+---
+import { site } from "~/lib/site";
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand footer-brand" href="/"
+        ><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>{
+          site.name
+        }</a
+      >
+      <p>Sourced social publishing requirements, designed for people and machines.</p>
+    </div>
+    <div>
+      <h2>Reference</h2>
+      <a href="/platforms/">Platforms</a><a href="/compare/">Compare</a><a
+        href="/api/platforms.json">JSON data</a
+      ><a href="/llms-full.txt">LLM text</a>
+    </div>
+    <div>
+      <h2>Project</h2>
+      <a href="/about/">About</a><a href="/changelog/">Changelog</a><a href={site.repo}
+        >GitHub</a
+      ><a href="/mcp/">MCP server</a>
+    </div>
+  </div>
+  <div class="container legal">
+    Open data, checked against first-party sources. Last dataset update: 21 August 2026.
+  </div>
+</footer>

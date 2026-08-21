@@ -1,0 +1,58 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { compareKeys, platforms } from "~/lib/platforms";
+---
+
+<BaseLayout
+  title="Compare social platform requirements"
+  description="Compare profile image sizes, post image formats, text limits, attachment counts, and alt-text support across social platforms."
+>
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Side-by-side reference</p><h1>Compare platforms.</h1><p
+        class="lede"
+      >
+        A normalized view of the constraints most publishing teams need. Scroll horizontally
+        on smaller screens.
+      </p>
+    </div>
+  </header>
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead
+        ><tr
+          ><th scope="col">Constraint</th>{
+            platforms.map((platform) => (
+              <th scope="col">
+                <a href={`/platforms/${platform.slug}/`}>{platform.name}</a>
+              </th>
+            ))
+          }</tr
+        ></thead
+      >
+      <tbody
+        >{
+          compareKeys.map((key) => (
+            <tr>
+              <th scope="row">{key.label}</th>
+              {platforms.map((platform) => {
+                const item = platform.constraints.find(
+                  (constraint) => constraint.id === key.id,
+                );
+                return (
+                  <td
+                    class:list={{
+                      "compare-empty": !item || item.status === "not-documented",
+                    }}
+                  >
+                    {item?.value ?? "Not documented"}
+                  </td>
+                );
+              })}
+            </tr>
+          ))
+        }</tbody
+      >
+    </table>
+  </div>
+</BaseLayout>

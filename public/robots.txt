@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://specification.social/sitemap-index.xml

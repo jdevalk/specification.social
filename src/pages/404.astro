@@ -1,0 +1,21 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Unsupported page or page not found"
+  description="The requested Social Specification page could not be found. Browse the platform index or search for a publishing requirement."
+  noindex
+  ><section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">404</p><h1>That format<br />isn't supported.</h1><p class="lede">
+        The page you requested does not exist.
+      </p><div class="actions">
+        <a class="button primary" href="/platforms/">Browse platforms</a><a
+          class="button"
+          href="/search/">Search</a
+        >
+      </div>
+    </div>
+  </section></BaseLayout
+>

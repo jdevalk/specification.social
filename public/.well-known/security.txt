@@ -1,0 +1,3 @@
+Contact: https://github.com/jdevalk/specification.social/security
+Canonical: https://specification.social/.well-known/security.txt
+Expires: 2027-08-21T00:00:00Z

@@ -1,0 +1,108 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import PlatformCard from "~/components/PlatformCard.astro";
+import { platforms } from "~/lib/platforms";
+---
+
+<BaseLayout
+  title="Social media sizes, formats, and text limits"
+  description="Find sourced image sizes, supported file formats, text limits, profile requirements, and publishing rules for major social platforms."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">The platform publishing reference</p>
+        <h1>Publish once.<br /><em>Fit everywhere.</em></h1>
+        <p class="lede">
+          Exact image sizes, accepted formats, text limits, attachment counts, and profile
+          requirements—checked against first-party sources.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="/platforms/"
+            >Browse {platforms.length} platforms →</a
+          ><a class="button" href="/compare/">Compare requirements</a><a
+            class="button"
+            href="/mcp/">Connect an agent</a
+          >
+        </div>
+      </div>
+      <aside class="specimen" aria-label="Example specification card">
+        <div class="specimen-head">
+          <div class="avatar"></div><span>Example · image post</span>
+        </div>
+        <dl>
+          <div><dt>Canvas</dt><dd>1080 × 1350 px</dd></div>
+          <div><dt>Ratio</dt><dd>4:5</dd></div>
+          <div><dt>Formats</dt><dd>JPG · PNG · WebP</dd></div>
+          <div><dt>Alt text</dt><dd>Supported</dd></div>
+        </dl>
+        <p class="verified">● Source checked · 2026-08-21</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">Choose a platform</p><h2>One source of publishing truth</h2>
+      </div><a href="/compare/">Compare side by side →</a>
+    </div>
+    <div class="platform-grid">
+      {platforms.map((platform, index) => <PlatformCard {platform} {index} />)}
+    </div>
+  </section>
+
+  <section class="principles section">
+    <div class="container">
+      <div class="section-header">
+        <div><p class="eyebrow">How it works</p><h2>Facts with provenance</h2></div>
+      </div>
+      <div class="principle-grid">
+        <article class="principle">
+          <span>01 / SOURCE</span><h3>First-party documentation</h3><p>
+            Every stated limit points to the platform help center, developer documentation,
+            or public schema behind it.
+          </p>
+        </article>
+        <article class="principle">
+          <span>02 / SCOPE</span><h3>Manual and API differ</h3><p>
+            Rules are labeled when they apply only to an app upload or an API. Differences
+            remain visible.
+          </p>
+        </article>
+        <article class="principle">
+          <span>03 / UNKNOWN</span><h3>No invented certainty</h3><p>
+            If a platform does not publish a limit, the specification says so instead of
+            repeating an unsourced number.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="section-header">
+      <div><p class="eyebrow">Made for workflows</p><h2>Read it or query it</h2></div>
+    </div>
+    <div class="feature-grid">
+      <article class="feature">
+        <h3>Human reference</h3><p>
+          Scan by platform, compare common constraints, and follow every value to its
+          source.
+        </p>
+      </article>
+      <article class="feature">
+        <h3>Open JSON</h3><p>
+          Use the normalized dataset in publishing tools, design systems, and validation
+          pipelines.
+        </p>
+      </article>
+      <article class="feature">
+        <h3>MCP server</h3><p>
+          Give an AI agent direct access to platform requirements, comparisons, and
+          validation.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

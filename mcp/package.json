@@ -1,0 +1,24 @@
+{
+  "name": "specification-social-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Read-only MCP Worker for The Social Specification.",
+  "license": "MIT",
+  "scripts": {
+    "build:data": "node scripts/build-data.mjs",
+    "predev": "npm run build:data",
+    "dev": "wrangler dev --port 31340",
+    "predeploy": "npm run build:data",
+    "deploy": "wrangler deploy",
+    "pretypecheck": "npm run build:data",
+    "typecheck": "tsc --noEmit",
+    "predry-run": "npm run build:data",
+    "dry-run": "wrangler deploy --dry-run"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260821.1",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.125.0"
+  }
+}

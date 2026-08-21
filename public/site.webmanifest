@@ -1,0 +1,10 @@
+{
+  "name": "The Social Specification",
+  "short_name": "Social Spec",
+  "description": "Sourced social publishing requirements.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f8f3",
+  "theme_color": "#0f766e",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
